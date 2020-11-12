@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'tribune.wsgi.application'
 #     }
 # }
 # development
-if config('MODE')=="dev":
+if config('MODE')=="production":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql',
