@@ -5,10 +5,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns=[ 
-    path('article/<article_id>',views.article,name ='article'),
+   
     path('',views.news_of_day,name='newsToday'),
     path('search/', views.search_results, name='search_results'),
     re_path(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name = 'pastNews'),
+    path('article/<int:article_id>',views.article,name ='article'),
     
 
 ]

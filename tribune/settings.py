@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '95yz&5=2d7zezxgudboj6%t&*sppc87=e%=9(exj==b^i1jc$_'
+SECRET_KEY = ('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'tribune.wsgi.application'
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'tribune',
-#         'USER': 'bernard',
-#     'PASSWORD':'86kerubo19',
+#         'USER': '',
+#     'PASSWORD':'',
 #     }
 # }
 # development
-if config('MODE')=="production":
+if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql',
