@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'sendgrid',
     'tinymce',
     'bootstrap4',
     'news.apps.NewsConfig',

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib import messages
 import datetime as dt
-from .models import Article
+from .models import Article,NewsLetterRececiepients
 from .forms import NewsLetterForm
 from .email import send_welcome_email
 from django.core.mail import send_mail
@@ -14,11 +14,6 @@ from django.contrib.auth import logout,login,authenticate
 
 # Create your views here.
 
-# def logout_view(request):
-#     logout(request)
-#     return redirect('/')
-
-
 def convert_dates(dates):
 
     # Function that gets the weekday number for the date.
@@ -29,12 +24,6 @@ def convert_dates(dates):
     # Returning the actual day of the week
     day = days[day_number]
     return day
-
-# def news_of_day(request):
-#     date = dt.date.today()
-#     return render(request, 'all-news/today-news.html', {"date": date,})
-
-
 
 
 def past_days_news(request, past_date):
@@ -58,9 +47,7 @@ def news_today(request):
     news = Article.todays_news()
     if request.method == 'POST':
         form = NewsLetterForm(request.POST)
-        print('FORM')
         if form.is_valid():
-            print('valid')
 
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
@@ -70,11 +57,8 @@ def news_today(request):
 
             HttpResponseRedirect('news_today')
 
-        else:
-            pass
     else:
         form = NewsLetterForm()
-        print('FORM')
     return render(request, 'all-news/today-news.html', {"date": date,"news":news,"letterForm":form})
 
 
