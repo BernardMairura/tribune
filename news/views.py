@@ -30,9 +30,9 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def news_of_day(request):
-    date = dt.date.today()
-    return render(request, 'all-news/today-news.html', {"date": date,})
+# def news_of_day(request):
+#     date = dt.date.today()
+#     return render(request, 'all-news/today-news.html', {"date": date,})
 
 
 
@@ -58,6 +58,7 @@ def news_today(request):
     news = Article.todays_news()
     if request.method == 'POST':
         form = NewsLetterForm(request.POST)
+        print('FORM')
         if form.is_valid():
             print('valid')
 
@@ -68,8 +69,12 @@ def news_today(request):
             send_welcome_email(name,email)
 
             HttpResponseRedirect('news_today')
+
+        else:
+            pass
     else:
         form = NewsLetterForm()
+        print('FORM')
     return render(request, 'all-news/today-news.html', {"date": date,"news":news,"letterForm":form})
 
 
