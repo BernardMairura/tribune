@@ -40,8 +40,14 @@
     {% endfor %}
     <input type="submit" value="Subscribe">
   </form>
-
-
+  
 </div>
+{% endblock %}
+<!--End of the block content-->
+{% block scripts %} 
+{%load static%}
+{{block.super}}
+  <script type="text/javascript" src="{%static 'js/newsletter.js'%}">
+  </script>
 {% endblock %}
 
